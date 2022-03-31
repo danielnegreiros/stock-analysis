@@ -1,0 +1,841 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1648662539647,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "title": "Row title",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "#EAB839",
+                "value": 10
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 20
+              },
+              {
+                "color": "dark-green",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "ticker",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  ticker AS metric,\n  \"freeCashflow\"*100/\"totalRevenue\"\nFROM fin_data\nWHERE ticker = '$my_ticker'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"currentRatio\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "fin_data",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": []
+        }
+      ],
+      "title": "FCF / Revenue",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 300,
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 50
+              },
+              {
+                "color": "dark-yellow",
+                "value": 70
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 90
+              },
+              {
+                "color": "dark-green",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
+      "id": 11,
+      "options": {
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "ticker",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  ticker AS metric,\n  \"totalCash\"*100/\"totalDebt\"\nFROM fin_data\nWHERE ticker = '$my_ticker'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"currentRatio\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "fin_data",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": []
+        }
+      ],
+      "title": "Cash / Debt",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.3
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.6
+              },
+              {
+                "color": "dark-purple",
+                "value": 1
+              },
+              {
+                "color": "blue",
+                "value": 1.5
+              },
+              {
+                "color": "dark-green",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "ticker",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  ticker AS metric,\n  \"currentRatio\", \"quickRatio\"\nFROM fin_data\nWHERE ticker = '$my_ticker'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"currentRatio\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "fin_data",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": []
+        }
+      ],
+      "title": "Debt Ratios",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0.05
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.1
+              },
+              {
+                "color": "blue",
+                "value": 0.15
+              },
+              {
+                "color": "dark-green",
+                "value": 0.2
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
+      "id": 9,
+      "options": {
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "ticker",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  ticker AS metric,\n  \"revenueGrowth\", \"earningsGrowth\"\nFROM fin_data\nWHERE ticker = '$my_ticker'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"currentRatio\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "fin_data",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": []
+        }
+      ],
+      "title": "Growth",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 0.05
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.1
+              },
+              {
+                "color": "blue",
+                "value": 0.15
+              },
+              {
+                "color": "dark-green",
+                "value": 0.2
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "id": 10,
+      "options": {
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "ticker",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  ticker AS metric,\n  \"returnOnEquity\", \"returnOnAssets\"\nFROM fin_data\nWHERE ticker = '$my_ticker'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"currentRatio\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "fin_data",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": []
+        }
+      ],
+      "title": "Efficiency",
+      "type": "gauge"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 7,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 1
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "date",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  sql_date AS \"time\",\n  date AS metric,\n  \"totalRevenue\"\nFROM \"incomeStatementHistory\"\nWHERE\n  $__timeFilter(sql_date) AND\n  ticker = '$my_ticker'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"totalRevenue\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"incomeStatementHistory\"",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "ticker",
+                "=",
+                "'$my_ticker'"
+              ],
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "date",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  sql_date AS \"time\",\n  date AS metric,\n  \"totalCashFromOperatingActivities\" + \"capitalExpenditures\"\nFROM \"cashflowStatementHistory\"\nWHERE\n  $__timeFilter(sql_date) AND\n  ticker = '$my_ticker'\nORDER BY 1,2",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"totalCashFromOperatingActivities\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"cashflowStatementHistory\"",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "ticker",
+                "=",
+                "$my_ticker"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "title": "Total Revenue and Free Cash Flow",
+      "type": "barchart"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "min": -2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "id": 13,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 1
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "date",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  sql_date AS \"time\",\n  date AS metric,\n  \"totalRevenue\"\nFROM \"incomeStatementHistoryQuarterly\"\nWHERE\n  $__timeFilter(sql_date) AND\n  ticker = '$my_ticker'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"totalRevenue\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"incomeStatementHistoryQuarterly\"",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "ticker",
+                "=",
+                "'$my_ticker'"
+              ],
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "date",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  sql_date AS \"time\",\n  date AS metric,\n  \"totalCashFromOperatingActivities\" + \"capitalExpenditures\"\nFROM \"cashflowStatementHistoryQuarterly\"\nWHERE\n  $__timeFilter(sql_date) AND\n  ticker = '$my_ticker'\nORDER BY 1,2",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"totalCashFromOperatingActivities\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"cashflowStatementHistory\"",
+          "timeColumn": "sql_date",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "ticker",
+                "=",
+                "$my_ticker"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "title": "Total Revenue and Free Cash Flow Quarterly",
+      "type": "barchart"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 35,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": true,
+          "text": "BABA",
+          "value": "BABA"
+        },
+        "definition": "SELECT\n  \"ticker\"\nFROM \"incomeStatementHistory\"\n",
+        "description": "tickers",
+        "hide": 0,
+        "includeAll": false,
+        "label": "tickers",
+        "multi": false,
+        "name": "my_ticker",
+        "options": [],
+        "query": "SELECT\n  \"ticker\"\nFROM \"incomeStatementHistory\"\n",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Growth",
+  "version": 106,
+  "weekStart": ""
+}

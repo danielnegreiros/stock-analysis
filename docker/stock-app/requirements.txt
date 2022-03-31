@@ -1,0 +1,11 @@
+pysqlite3
+flask
+beautifulsoup4
+pytz
+yahoofinancials
+setuptools
+sqlalchemy
+sqlalchemy_utils
+psycopg2
+PyYAML
+

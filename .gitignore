@@ -1,0 +1,9 @@
+.vscode/
+docker/stock-app/src/__pycache__
+docker/stock-app/src/exporters/__pycache__
+docker/stock-app/src/scraper/__pycache__
+docker/stock-app/src/controllers/__pycache__/
+docker/stock-app/src/model/__pycache__/
+docker/stock-app/src/utils/__pycache__
+docker/stock-app/notes.txt
+docker/stock-app/src/debug/

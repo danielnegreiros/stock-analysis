@@ -1,0 +1,7 @@
+schemas:
+  incomeStatementHistory: anual
+  cashflowStatementHistory: anual
+  balanceSheetHistory: anual
+  incomeStatementHistoryQuarterly: quarterly
+  cashflowStatementHistoryQuarterly: quarterly
+  balanceSheetHistoryQuarterly: quarterly

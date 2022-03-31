@@ -1,0 +1,32 @@
+version: '3'
+services:
+  stock_db:
+    container_name: stock_db
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgrespass
+    networks:
+      - net
+
+  stock_dashboard:
+    container_name: stock_dashboard
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - net
+
+  stock_engine:
+    container_name: stock_engine
+    build:
+      context: ./stock-app
+    restart: always
+    networks:
+      - net
+
+networks:
+  net:
